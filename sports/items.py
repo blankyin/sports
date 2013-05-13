@@ -23,3 +23,7 @@ class PremierleagueItem(VideoItem):
 class SerieaItem(VideoItem):
 	""" 意甲 """
 	pass
+
+class CslItem(VideoItem):
+	""" 中超 """
+	pass
