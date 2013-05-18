@@ -1,0 +1,19 @@
+$def with (videos)
+
+$var jsfiles: $config.static/js/video.js, $config.static/js/menu.js
+
+$:render.menu()
+
+<div class="main"> 
+    <input style="width: 250px" id="filterInput" type="textbox" class="ui-widget-content ui-corner-all" />
+    <input type="button" onclick="loadFilteredData()" id="filterdata" value="搜索" />
+    <!-- Begin video markup -->
+    <table id="video"> 
+    </table> 
+    <!-- End video markup -->
+    <div class="video-options"> 
+        <!-- Begin options markup -->
+        <!-- End options markup -->
+    </div> 
+</div> 
+

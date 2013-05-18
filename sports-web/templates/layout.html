@@ -5,17 +5,54 @@ $def with(content)
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 	<title>$config.site_name</title>
-	<link href="$config.static/styles/reset.css" rel="stylesheet" type="text/css" />
-	<link href="$config.static/styles/index/style.css" rel="stylesheet" type="text/css" />
+
+    <!-- Le styles -->
+    <link type="text/css" href="$config.static/jquery-ui-bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+    <link type="text/css" href="$config.static/jquery-ui-bootstrap/css/font-awesome.min.css" rel="stylesheet" />
+    <!--[if IE 7]>
+    <link rel="stylesheet" href="$config.static/jquery-ui-bootstrap/css/font-awesome-ie7.min.css">
+    <![endif]-->
+    <!--[if lt IE 9]>
+    <link rel="stylesheet" type="text/css" href="$config.static/jquery-ui-bootstrap/css/jquery.ui.1.10.0.ie.css"/>
+    <![endif]-->
+
+    <!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
+    <!--[if lt IE 9]>
+    <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+
+    
+    <!-- Wijmo CDN Start -->
+    <!--jQuery References-->
+    <script src="http://code.jquery.com/jquery-1.9.1.min.js" type="text/javascript"></script>
+    <script src="http://code.jquery.com/ui/1.10.1/jquery-ui.min.js" type="text/javascript"></script>
+     
+    <!--Theme-->
+    <link href="http://cdn.wijmo.com/themes/rocket/jquery-wijmo.css" rel="stylesheet" type="text/css" />
+     
+    <!--Wijmo Widgets CSS-->
+    <link href="http://cdn.wijmo.com/jquery.wijmo-pro.all.3.20131.4.min.css" rel="stylesheet" type="text/css" />
+     
+    <!--Wijmo Widgets JavaScript-->
+    <script src="http://cdn.wijmo.com/jquery.wijmo-open.all.3.20131.4.min.js" type="text/javascript"></script>
+    <script src="http://cdn.wijmo.com/jquery.wijmo-pro.all.3.20131.4.min.js" type="text/javascript"></script>
+    <!-- Wijmo CDN End -->
+
+
+    <script src="$config.static/js/menu.js" type="text/javascript"></script>
+
+    $# $if content.jsfiles:
+    $#     $for jsfile in content.jsfiles.split(','):
+    $#         <script src="$jsfile" type="text/javascript"></script>
+
 </head>
 
 <body>
 <div class="page">
-    <div class="header box">
-        <h1><a href="/">$config.site_name</a></h1>
-    </div>
+    $:render.menu()
 
-    <div class="main box">
+    <div class="container"> 
     	$:content
     </div>
 
@@ -25,5 +62,6 @@ $def with(content)
     </div>
 
 </div>
+
 </body>
 </html>

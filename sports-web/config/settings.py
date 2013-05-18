@@ -4,7 +4,8 @@ import web
 
 db = web.database(dbn='mysql', db='spider', host='127.0.0.1', user='root', pw='root')
 
-render = web.template.render('templates/', base='layout', cache=False)
+render = web.template.render('templates/', cache=False)
+render_layout = web.template.render('templates/', base='layout', cache=False)
 
 web.config.debug = True
 
@@ -18,3 +19,4 @@ config = web.storage(
 
 web.template.Template.globals['config'] = config
 web.template.Template.globals['render'] = render
+web.template.Template.globals['render_layout'] = render_layout

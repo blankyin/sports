@@ -4,6 +4,7 @@
 pre_fix = 'controllers.'
 
 urls = (
-    '/',						pre_fix + 'video.Index',
+    '/',					pre_fix + 'index.Index',
+    '/video/(\w+)',			pre_fix + 'video.Video',
 
 )
