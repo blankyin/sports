@@ -8,12 +8,12 @@ import web
 
 db = settings.db
 table = 'sports_video'
-render_layout = settings.render_layout
+render = settings.render
 
 
 class Video:
 	def GET(self, sport_type):
-		sport_id = getSportId(sport_type)
+		sport_id, sport_name = getSportId(sport_type)
 
 		params = web.input()
 		page = params.page if hasattr(params, 'page') else 1
@@ -28,7 +28,12 @@ class Video:
 		else:
 			pages = video_count.count / per_page
 
-		return render_layout.video(videos, pages)
+		data = {}
+		data['sport_name'] = sport_name
+		data['videos'] = videos
+		data['pages'] = pages
+		data['page'] = page
+		return render.video(data)
 
 		# Json返回
 		#web.header('Content-Type', 'application/json') 
@@ -37,14 +42,19 @@ class Video:
 
 def getSportId(sport_type):
 	sport_id = 0
+	sport_name = u''
 	if sport_type:
-		if sport_type == 'xijia':
+		if sport_type == u'xijia':
 			sport_id = 2
+			sport_name = u'西甲'
 		elif sport_type == 'yingchao':
 			sport_id = 3
+			sport_name = u'英超'
 		elif sport_type == 'yijia':
 			sport_id = 4
-		else:
+			sport_name = u'意甲'
+		elif sport_type == 'zhongchao':
 			sport_id = 5
+			sport_name = u'中超'
 
-	return sport_id
+	return (sport_id, sport_name)

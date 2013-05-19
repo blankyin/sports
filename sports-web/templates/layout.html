@@ -1,64 +1,60 @@
-$def with(content)
-
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
+    {% block head %}
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-	<title>$config.site_name</title>
+	<title>{% block title %}$config.site_name{% endblock %}</title>
 
+    {% block style %}
     <!-- Le styles -->
-    <link type="text/css" href="$config.static/jquery-ui-bootstrap/css/bootstrap.min.css" rel="stylesheet">
-
-    <link type="text/css" href="$config.static/jquery-ui-bootstrap/css/font-awesome.min.css" rel="stylesheet" />
+    <link type="text/css" href="/static/third/jquery-ui-bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link type="text/css" href="/static/third/jquery-ui-bootstrap/css/font-awesome.min.css" rel="stylesheet" />
     <!--[if IE 7]>
-    <link rel="stylesheet" href="$config.static/jquery-ui-bootstrap/css/font-awesome-ie7.min.css">
+    <link rel="stylesheet" href="/static/third/jquery-ui-bootstrap/css/font-awesome-ie7.min.css">
     <![endif]-->
     <!--[if lt IE 9]>
-    <link rel="stylesheet" type="text/css" href="$config.static/jquery-ui-bootstrap/css/jquery.ui.1.10.0.ie.css"/>
+    <link rel="stylesheet" type="text/css" href="/static/third/jquery-ui-bootstrap/css/jquery.ui.1.10.0.ie.css"/>
     <![endif]-->
 
     <!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
     <!--[if lt IE 9]>
     <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
-
     
-    <!-- Wijmo CDN Start -->
+    <!--Theme-->
+    <link href="http://cdn.wijmo.com/themes/rocket/jquery-wijmo.css" rel="stylesheet" type="text/css" />
+    <!--Wijmo Widgets CSS-->
+    <link href="http://cdn.wijmo.com/jquery.wijmo-pro.all.3.20131.4.min.css" rel="stylesheet" type="text/css" />
+    {% endblock %}
+
+    {% block script %}
     <!--jQuery References-->
     <script src="http://code.jquery.com/jquery-1.9.1.min.js" type="text/javascript"></script>
     <script src="http://code.jquery.com/ui/1.10.1/jquery-ui.min.js" type="text/javascript"></script>
-     
-    <!--Theme-->
-    <link href="http://cdn.wijmo.com/themes/rocket/jquery-wijmo.css" rel="stylesheet" type="text/css" />
-     
-    <!--Wijmo Widgets CSS-->
-    <link href="http://cdn.wijmo.com/jquery.wijmo-pro.all.3.20131.4.min.css" rel="stylesheet" type="text/css" />
-     
     <!--Wijmo Widgets JavaScript-->
     <script src="http://cdn.wijmo.com/jquery.wijmo-open.all.3.20131.4.min.js" type="text/javascript"></script>
-    <script src="http://cdn.wijmo.com/jquery.wijmo-pro.all.3.20131.4.min.js" type="text/javascript"></script>
-    <!-- Wijmo CDN End -->
+    <!-- 分页有修改1686行代码-->
+    <script src="/static/third/wijmo/js/jquery.wijmo-pro.all.3.20131.4.js" type="text/javascript"></script>
+    <script src="/static/js/menu.js" type="text/javascript"></script>
+    {% endblock %}
 
-
-    <script src="$config.static/js/menu.js" type="text/javascript"></script>
-
-    $# $if content.jsfiles:
-    $#     $for jsfile in content.jsfiles.split(','):
-    $#         <script src="$jsfile" type="text/javascript"></script>
-
+    {% endblock %}
 </head>
 
 <body>
 <div class="page">
-    $:render.menu()
+    {% include  "menu.html" %}
 
     <div class="container"> 
-    	$:content
+        {% block content %}
+
+    	{% endblock %}
     </div>
 
     <div class="foot">
-        Copyright&copy; $config.site_name
-        
+        {% block footer %}
+            Copyright&copy; $config.site_name
+        {% endblock %}
     </div>
 
 </div>

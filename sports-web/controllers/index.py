@@ -3,9 +3,9 @@
 
 from config import settings
 
-render_layout = settings.render_layout
+render = settings.render
 
 class Index:
 	def GET(self):
-		
-		return render_layout.index()
+		data = {}
+		return render.index(data)
