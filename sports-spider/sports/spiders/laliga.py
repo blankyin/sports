@@ -28,12 +28,11 @@ class LaligaSpider(CrawlSpider):
 		
 		# 初始化最近赛事轮次
 		if self.s_round == 0 and not self.is_over:	
-			pre_last_url = "/html/body/div[@class='wrapper_zt']/div[@id='ztg_5']/div[@class='col_1']/div[@id='ztu_5']/div[@class='bd']/div[@class='inner']/div/table[@class='video_ct']/tbody/tr/td/div[@class='video_area']/table/tbody/tr[1]/td/div[@class='video_pic']/a/@href"
+			pre_last_url = "/html/body/div[@class='wrapper_zt']/div[@id='ztg_5']/div[@class='col_1']/div[@id='ztu_5']/div[@class='bd']/div[@class='inner']/div/table[@class='video_ct']/tbody/tr/td/div[@class='video_area']/table/tbody/tr[2]/td[@class='video_tit']/p/a/@href"
 			# 如果使用googlecache则使用下面的XPath
 			#pre_last_url = "/html/body/div[2]/div[@class='wrapper_zt']/div[@id='ztg_5']/div[@class='col_1']/div[@id='ztu_5']/div[@class='bd']/div[@class='inner']/div/table[@class='video_ct']/tbody/tr/td/div[@class='video_area']/table/tbody/tr[1]/td/div[@class='video_pic']/a/@href"
 			pre_last = list_last_item(hxs.select(pre_last_url).extract())
 			self.s_round = get_round('http://v.qq.com/zt2012/ligabbva/ligabbva(\w+).htm', pre_last)
-
 
 		if self.s_round >= 0:
 			if self.s_round > 0:

@@ -9,4 +9,4 @@ def get_round(match_rule, match_url):
 		if m and m.groups():
 			return int(m.groups()[0])
 	
-	return -1
+	return 0

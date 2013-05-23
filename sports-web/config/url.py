@@ -6,5 +6,7 @@ pre_fix = 'controllers.'
 urls = (
     '/',					pre_fix + 'index.Index',
     '/video/(\w+)',			pre_fix + 'video.Video',
+    '/auth/login',			pre_fix + 'auth.Login',
+    '/auth/logout',			pre_fix + 'auth.Logout',
 
 )

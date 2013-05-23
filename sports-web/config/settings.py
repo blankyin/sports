@@ -2,7 +2,7 @@
 # coding: utf-8
 import web
 import os
-from web.contrib.template import render_jinja
+from config.jinja2_render import RenderJinja2
 
 db = web.database(dbn='mysql', db='spider', host='127.0.0.1', user='root', pw='root')
 
@@ -12,10 +12,14 @@ db = web.database(dbn='mysql', db='spider', host='127.0.0.1', user='root', pw='r
 # Jinja2模板加载
 app_root = os.path.abspath(os.path.dirname(os.path.dirname(__file__))) # 当前文件上级目录
 templates_path = os.path.join(app_root, 'templates').replace('\\', '/')
-render = render_jinja(
+
+render = RenderJinja2(
     templates_path,
-    encoding='utf-8'
+    encoding='utf-8',
+	registers=locals(),
+	globals={'session': web.ctx.session}
 )
+
 
 config = web.storage(
     email='blankyin@gmail.com',

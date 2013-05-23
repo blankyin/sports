@@ -3,7 +3,7 @@
 <head>
     {% block head %}
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-	<title>{% block title %}$config.site_name{% endblock %}</title>
+	<title>{% block title %}Who Am I - {% endblock %}</title>
 
     {% block style %}
     <!-- Le styles -->
@@ -25,6 +25,9 @@
     <link href="http://cdn.wijmo.com/themes/rocket/jquery-wijmo.css" rel="stylesheet" type="text/css" />
     <!--Wijmo Widgets CSS-->
     <link href="http://cdn.wijmo.com/jquery.wijmo-pro.all.3.20131.4.min.css" rel="stylesheet" type="text/css" />
+    <link type="text/css" href="/static/css/style.css" rel="stylesheet" />
+
+
     {% endblock %}
 
     {% block script %}
@@ -36,28 +39,41 @@
     <!-- 分页有修改1686行代码-->
     <script src="/static/third/wijmo/js/jquery.wijmo-pro.all.3.20131.4.js" type="text/javascript"></script>
     <script src="/static/js/menu.js" type="text/javascript"></script>
+
+    
     {% endblock %}
 
     {% endblock %}
 </head>
 
 <body>
-<div class="page">
-    {% include  "menu.html" %}
+    {% block menu %}
+        <a target="_blank" href="https://github.com/blankyin">
+            <img alt="Fork me on GitHub" src="https://s3.amazonaws.com/github/ribbons/forkme_right_red_aa0000.png" style="z-index:10; position: absolute; top: 0; right: 0; border: 0;">
+        </a>
+        {% include  "menu.html" %}
+    {% endblock %}
 
     <div class="container"> 
-        {% block content %}
-
-    	{% endblock %}
-    </div>
-
-    <div class="foot">
-        {% block footer %}
-            Copyright&copy; $config.site_name
+        <div class="content">
+            
+        {% block pageHeader %}
         {% endblock %}
-    </div>
 
-</div>
+        {% block content %}
+    	{% endblock %}
+        </div>
+
+        <footer>
+            {% block footer %}
+                <p>
+                    &copy; 2013 Powered by <a target="_blank" href="http://weibo.com/skyin333">@blankyin</a>
+                    <script type="text/javascript" src="http://js.tongji.linezing.com/3207580/tongji.js"></script>
+                    <a href="http://www.linezing.com"></a>
+                </p>
+            {% endblock %}  
+        </footer>
+    </div>
 
 </body>
 </html>
