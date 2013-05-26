@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-from jinja2 import Environment, FileSystemLoader
+from jinja2 import Environment, FileSystemLoader, TemplateNotFound
 
 class RenderJinja2:
 

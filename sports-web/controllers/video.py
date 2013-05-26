@@ -18,7 +18,7 @@ class Video:
 		params = web.input()
 		page = params.page if hasattr(params, 'page') else 1
 		
-		per_page = 20
+		per_page = 10
 		offset = (int(page) - 1) * per_page
 		videos = db.select(table, where='sport_id=%d' % sport_id, order='round desc, gmt_create desc', offset=offset, limit=per_page)
 		video_count = db.query("SELECT COUNT(1) AS count FROM %s where sport_id=%d" % (table, sport_id) )[0]

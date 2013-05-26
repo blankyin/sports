@@ -15,6 +15,13 @@
 		<div class="row-fluid">
 			<div class="span6">
 				<h4>最近文章</h4>
+				<ul class="unstyled">
+					{% for article in articles %}
+						<li>
+							<a target="_blank" href="/article/article_detail?article_id={{article.id}}">{{article.article_title}} </a>  <span class="muted">（{{ article.published_time }}）</span>
+						</li>
+					{% endfor %}
+				</ul>
 			</div>
 			<div class="span6">
 				<h4>最近文章</h4>
@@ -24,7 +31,10 @@
 
 		<div class="row-fluid">
 			<div class="span6">
-				<h4>友情链接</h4>
+				<h4>常用链接</h4>
+				<ul>
+					<li><a target="_blank" href="http://webpy.org">web.py官网</a></li>
+				</ul>
 			</div>
 			<div class="span6">
 				<!-- 新浪微博：http://app.weibo.com/tool/ -->

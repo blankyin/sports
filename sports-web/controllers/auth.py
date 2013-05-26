@@ -1,9 +1,10 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-import hashlib
+
 import web
 from config import settings
+from controllers.utils import hash_password
 
 db = settings.db
 table = 'auth_user'
@@ -15,6 +16,8 @@ class Login:
 		username = web.cookies().get('username')
 		password = web.cookies().get('password')
 		if username and password and self.checkUser(username, password):
+			web.ctx.session.login = True
+			web.ctx.session.username = username
 			return render.index()
 
 		return render.render('auth/login')
@@ -31,7 +34,8 @@ class Login:
 			data['username'] = username
 			return render.render('auth/login')
 		else:
-			password = hashlib.sha1(password).hexdigest()	
+			password = hash_password(password)
+
 			if not self.checkUser(username, password):
 				return render.render('auth/login')
 			else:

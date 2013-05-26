@@ -4,11 +4,11 @@
 import web
 from config import settings
 
+db = settings.db
+table_article = 'article'
 render = settings.render
 
 class Index:
 	def GET(self):
-		data = {}
-		print web.ctx.session.login
-		print web.ctx.session.username
-		return render.index(data)
+		articles = db.select(table_article, where="status=1", order="published_time desc", limit="5" )
+		return render.render('index', articles=articles)
