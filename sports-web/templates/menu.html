@@ -13,12 +13,11 @@
         </li> 
 
         <li><a href="/article/article">文章列表</a></li>
-        <li><a href="/article/add_article">发表文章</a></li>
-        <li><a href="/article/category">类别管理</a></li>
-        {% if session.login %}
+        
+        {% if session.login == 1 %}
+            <li><a href="/article/add_article">发表文章</a></li>
+            <li><a href="/article/category">类别管理</a></li>
             <li><a href="/auth/logout">注销</a></li>
-        {% else %}
-            <li><a href="/auth/login">登录</a></li> 
         {% endif %}
     </ul> 
 </div>

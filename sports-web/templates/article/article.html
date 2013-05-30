@@ -46,7 +46,7 @@
 		    <tr>
 		      <th width="50%">文章标题</th>
 		      <th width="30%">发表时间</th>
-		      {% if session.login %}
+		      {% if session.login == 1 %}
 		      <th width="25%">操作</th>
 		      {% endif %}
 		    </tr>
@@ -58,7 +58,7 @@
 					<a target="_blank" href="/article/article_detail?article_id={{article.id}}">{{article.article_title}}</a>
 				</td>
 				<td>{{article.published_time}}</td>
-				{% if session.login %}
+				{% if session.login == 1 %}
 				<td>
 					 <a class="btn btn-small btn-info" target="_blank" href="/article/edit_article?article_id={{article.id}}">编辑</a>
 					 <a href="#" class="btn btn-small btn-danger confirm" id="del_article{{article.id}}">删除</a>

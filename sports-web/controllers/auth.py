@@ -16,7 +16,7 @@ class Login:
 		username = web.cookies().get('username')
 		password = web.cookies().get('password')
 		if username and password and self.checkUser(username, password):
-			web.ctx.session.login = True
+			web.ctx.session.login = 1
 			web.ctx.session.username = username
 			return render.index()
 
@@ -39,7 +39,7 @@ class Login:
 			if not self.checkUser(username, password):
 				return render.render('auth/login')
 			else:
-				web.ctx.session.login = True
+				web.ctx.session.login = 1
 				web.ctx.session.username = username
 
 				# 记住密码一周

@@ -10,5 +10,5 @@ render = settings.render
 
 class Index:
 	def GET(self):
-		articles = db.select(table_article, where="status=1", order="published_time desc", limit="5" )
+		articles = db.select(table_article, where="status=1", order="published_time desc", limit="10" )
 		return render.render('index', articles=articles)

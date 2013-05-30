@@ -3,12 +3,13 @@
 
 from config.url import urls
 import web
+from config.log import Log
 
 app = web.application(urls, globals())
 
 if web.config.get('_session') is None:
 	store = web.session.DiskStore('sessions')
-	session = web.session.Session(app, store, initializer={'login':False, 'username':''})
+	session = web.session.Session(app, store, initializer={'login':0, 'username':''})
 	web.config._session = session
 else:
 	session = web.config._session
@@ -26,4 +27,4 @@ app.add_processor(web.loadhook(request_hook))
 
 
 if __name__ == "__main__":
-    app.run()
+    app.run(Log)
