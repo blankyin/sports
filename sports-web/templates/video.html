@@ -51,7 +51,7 @@
 					{{video.time}}
 				</td>
 				<td>
-					{{video.gmt_create}}
+					{{video.gmt_create.strftime('%Y-%m-%d %H:%M:%S')}}
 				</td>
 			</tr>
 		{% endfor %}

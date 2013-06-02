@@ -60,8 +60,14 @@ class Login:
 		""" 
 		验证用户是否存在 
 		"""
-		user = db.query("select count(1) as count from auth_user where user_name=$username and password=$password and is_active=1", vars={'username':username, 'password':password})[0]
-		if user.count < 1:
+
+		# mysql
+		# user = db.query("select count(1) as count from auth_user where user_name=$username and password=$password and is_active=1", vars={'username':username, 'password':password})[0]
+		
+		# mongodb
+		user = db[table].find({"user_name" : username, "password" : password, "is_active" : 1})
+
+		if user.count() < 1:
 			return False
 		else :
 			return True

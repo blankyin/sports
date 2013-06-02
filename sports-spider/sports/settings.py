@@ -12,7 +12,7 @@ NEWSPIDER_MODULE = 'sports.spiders'
 #SCHEDULER_QUEUE_CLASS = "scrapy_redis.queue.SpiderStack"
 
 ITEM_PIPELINES = [
-	'sports.pipelines.VideoPipeline',
+	'sports.pipelines.VideoPipelineForMongoDB',
 	#'scrapy_redis.pipelines.RedisPipeline'
 ]
 

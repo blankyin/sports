@@ -3,9 +3,12 @@
 import web
 import os
 from config.jinja2_render import RenderJinja2
+from pymongo import MongoClient
 
 # 数据库连接
-db = web.database(dbn='mysql', db='spider', host='127.0.0.1', user='root', pw='root')
+# db = web.database(dbn='mysql', db='spider', host='127.0.0.1', user='root', pw='root')
+client = MongoClient('localhost', 27017)
+db = client.sports
 
 # Jinja2模板加载
 app_root = os.path.abspath(os.path.dirname(os.path.dirname(__file__))) # 当前文件上级目录

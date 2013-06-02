@@ -46,7 +46,7 @@
 	  	<div class="control-group">
 	    	<label class="control-label" for="inputPassword">文章标签</label>
 	    	<div class="controls">
-	      		<input type="text" class="input-xxlarge" value="{{ tags }}" id="tags" name="tags" placeholder="文章标签">
+	      		<input type="text" class="input-xxlarge" value="{{ article.tags }}" id="tags" name="tags" placeholder="文章标签">
 	      		<br>（最多添加5个标签，多个标签之间用“,”分隔） 
 	    	</div>
 	  	</div>
@@ -55,7 +55,7 @@
 	    	<div class="controls">
 	      		{% for category in categorys %}
 			      	<label class="checkbox inline">
-						<input type="checkbox" id="categorys" {% if category.id in select_categorys %} checked{% endif %} name="categorys" value="{{category.id}}">  {{category.name}}
+						<input type="checkbox" id="categorys" {% if category._id in select_categorys %} checked{% endif %} name="categorys" value="{{category._id}}">  {{category.name}}
 					</label>
 	      		{% endfor %}
 	    	</div>

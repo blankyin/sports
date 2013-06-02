@@ -10,10 +10,10 @@
 	<script>
 		$(document).ready(function(){
 			{% for category in categorys %}
-				 $('#del_category{{category.id}}').confirm({
+				 $('#del_category{{category._id}}').confirm({
 			        'message' : '确认删除吗？',
 			        'action' : function() {
-			            delCategory({{category.id}})
+			            delCategory('{{category._id}}')
 			        }
 			    }
 			);
@@ -47,9 +47,9 @@
 			<tr>
 				<td>{{category.name}}</td>
 				<td>{{category.article_num}}</td>
-				<td>{{category.gmt_create}}</td>
+				<td>{{category.gmt_create.strftime('%Y-%m-%d %H:%M:%S')}}</td>
 				<td>
-					 <a href="#" class="btn btn-small btn-danger confirm" id="del_category{{category.id}}">删除</a>
+					 <a href="#" class="btn btn-small btn-danger confirm" id="del_category{{category._id}}">删除</a>
 				</td>
 			</tr>
 		{% endfor %}

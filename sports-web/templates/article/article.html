@@ -22,7 +22,7 @@
 				 $('#del_article{{article.id}}').confirm({
 			        'message' : '确认删除吗？',
 			        'action' : function() {
-			            delArticle({{article.id}})
+			            delArticle('{{article._id}}')
 			        }
 			    }
 			);
@@ -55,12 +55,12 @@
 		{% for article in articles %}
 			<tr>
 				<td>
-					<a target="_blank" href="/article/article_detail?article_id={{article.id}}">{{article.article_title}}</a>
+					<a target="_blank" href="/article/article_detail?article_id={{article._id}}">{{article.article_title}}</a>
 				</td>
-				<td>{{article.published_time}}</td>
+				<td>{{article.published_time.strftime('%Y-%m-%d %H:%M:%S')}}</td>
 				{% if session.login == 1 %}
 				<td>
-					 <a class="btn btn-small btn-info" target="_blank" href="/article/edit_article?article_id={{article.id}}">编辑</a>
+					 <a class="btn btn-small btn-info" target="_blank" href="/article/edit_article?article_id={{article._id}}">编辑</a>
 					 <a href="#" class="btn btn-small btn-danger confirm" id="del_article{{article.id}}">删除</a>
 				</td>
 				{% endif %}
