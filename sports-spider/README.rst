@@ -11,7 +11,7 @@ sports-spider
 
 项目背景：
 ============================
-1. scrapy + mysql + redis
+1. scrapy + mongodb + redis
 2. 第一个scrapy项目
 3. 开发中使用了chrome插件XPath Helper，方便XPath解析
 4. 使用redis保存已经爬取过的URL，避免重复爬取

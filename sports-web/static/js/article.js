@@ -2,7 +2,7 @@
 $(document).ready(function () {
 
 	if($('#article_form').length > 0){
-		// 表单验证
+		// 文章表单验证
 		$('#article_form').validate({
 		    rules: {
 		    	article_title: {
@@ -34,6 +34,29 @@ $(document).ready(function () {
 				$('#article_form').submit()
 			}
 	 
+		});
+	}
+
+
+	// 类别表单验证
+	if($('#category_form').length > 0){
+		$('#category_form').validate({
+		    rules: {
+		    	category_name: {
+		        	required: true
+		      	}
+		    },
+		    messages: {
+		    	category_name: {
+		        	required: ' 请输入类别名称 '
+		      	}
+		    },
+			highlight: function(element) {
+				$(element).closest('.control-group').removeClass('success').addClass('error');
+			},
+			success: function(element) {
+				element.text('OK!').addClass('valid').closest('.control-group').removeClass('error').addClass('success');
+			}
 		});
 	}
 });

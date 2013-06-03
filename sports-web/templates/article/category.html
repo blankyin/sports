@@ -2,6 +2,11 @@
 
 {% block title%}{{super()}}类别管理{% endblock%}
 
+{% block style %}
+	{{ super() }}
+	<link rel="stylesheet" type="text/css" href="/static/css/valid.css"></link>
+{% endblock %}
+
 {% block script %}
 	{{ super() }}
 	
@@ -20,6 +25,9 @@
 			{% endfor %}
 		});
 	</script>
+
+	<!-- Validate plugin -->
+	<script src="/static/third/jquery-ui-bootstrap/js/jquery.validate.min.js"></script>
 {% endblock %}
 
 
@@ -57,11 +65,11 @@
 	</table>
 
 	<p>
-	<form class="form-horizontal" method="post">
+	<form id="category_form" class="form-horizontal" method="post">
 	  	<div class="control-group">
 	    	<div class="controls">
-	    		<input type="text" id="category_name" name="category_name" value="{{category_name}}" placeholder="分类名称">
-	      		<button type="submit" class="btn btn-primary">添加分类</button>
+	    		<input type="text" id="category_name" name="category_name" value="{{category_name}}" placeholder="添加类别">
+	      		<button type="submit" class="btn btn-primary">添加类别</button>
 	    	</div>
 	  	</div>
 	</form>

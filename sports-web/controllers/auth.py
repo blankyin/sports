@@ -30,14 +30,14 @@ class Login:
 		remember = data.get('remember', '')
 
 		if not username or not password:
-			data = {}
-			data['username'] = username
-			return render.render('auth/login')
+			error_msg = u"用户名或密码不能为空！"
+			return render.render('auth/login', username=username, error_msg=error_msg)
 		else:
 			password = hash_password(password)
 
 			if not self.checkUser(username, password):
-				return render.render('auth/login')
+				error_msg = u'用户名或密码错误！'
+				return render.render('auth/login', username=username, error_msg=error_msg)
 			else:
 				web.ctx.session.login = 1
 				web.ctx.session.username = username

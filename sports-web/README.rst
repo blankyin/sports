@@ -8,3 +8,4 @@ sports-web
 3. 模版准备使用Jinja2
 4. 富文本编辑器：bootstrap-wysihtml5
 5. 日志使用wsgilog
+6. 数据库使用MongoDB

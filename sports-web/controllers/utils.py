@@ -12,7 +12,7 @@ def hash_password(password):
 def login_required(func):
 	def function(*args):
 		if not web.ctx.session.login:
-			raise web.seeother('/')
+			raise web.seeother('/auth/login')
 		else:
 			return func(*args)
 	return function
